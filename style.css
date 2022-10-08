@@ -1,0 +1,11 @@
+body {
+  background-color: rgb(228, 248, 166);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+body .flag {
+  width: 60%;
+  margin-left: 20%;
+}/*# sourceMappingURL=style.css.map */
