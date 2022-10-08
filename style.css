@@ -7,8 +7,12 @@ body {
 }
 body .flag {
   width: 60%;
-  margin-left: 20%;
+  margin-left: 10%;
 }
 body .page {
   margin-left: 20%;
+}
+body .widget {
+  margin-left: 75%;
+  transform: translateY(-460px);
 }/*# sourceMappingURL=style.css.map */

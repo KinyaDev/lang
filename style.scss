@@ -4,10 +4,15 @@ body {
 
     .flag {
         width: 60%;
-        margin-left: 20%;
+        margin-left: 10%;
     }
 
     .page {
         margin-left: 20%;
+    }
+
+    .widget {
+        margin-left: 75%;
+        transform: translateY(-460px);
     }
 }
