@@ -5,14 +5,15 @@ body {
       -ms-user-select: none;
           user-select: none;
 }
-body .flag {
-  width: 60%;
-  margin-left: 10%;
+
+.flag {
+  width: 70%;
 }
-body .page {
+
+.k {
   margin-left: 20%;
 }
-body .widget {
-  margin-left: 75%;
-  transform: translateY(-460px);
+
+.page {
+  margin-left: 20%;
 }/*# sourceMappingURL=style.css.map */
