@@ -88,8 +88,8 @@
     ></script>
     <script>
       const socket = io("https://nyaara-app.herokuapp.com/");
-      socket.on("okay", () => {
-        console.log("Connected to the server!");
+      socket.on("okay", (s) => {
+        console.log("Connected to the server as: " + s.id);
       });
     </script>
   </body>
