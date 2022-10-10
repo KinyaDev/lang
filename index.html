@@ -87,9 +87,11 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      const socket = io("https://nyaara-app.herokuapp.com/");
-      socket.on("okay", (s) => {
-        console.log("Connected to the server as: " + s.id);
+      const socket = io("https://nyaara-app.herokuapp.com/", {
+        withCredentials: true,
+        extraHeaders: {
+          "my-custom-header": "abcd",
+        },
       });
     </script>
   </body>
