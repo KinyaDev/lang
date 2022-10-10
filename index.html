@@ -86,6 +86,11 @@
       integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
       crossorigin="anonymous"
     ></script>
-    <script src="./index.js"></script>
+    <script>
+      const socket = io("https://nyaara-app.herokuapp.com/");
+      socket.on("okay", () => {
+        console.log("Connected to the server!");
+      });
+    </script>
   </body>
 </html>
