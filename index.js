@@ -1,4 +1,4 @@
-let servRoot = "https://nyaara-app.herokuapp.com/";
+let servRoot = "https://nyaara-app.herokuapp.com";
 
 function getNote() {
   return new Promise(async (resolve, reject) => {
@@ -7,9 +7,15 @@ function getNote() {
   });
 }
 
-function addNote(note) {
+function addNote(note, id) {
   return new Promise(async (resolve, reject) => {
-    await fetch(`${servRoot}/recommend/${note}`);
+    await fetch(`${servRoot}/recommend/${id}/${note}`);
     resolve();
   });
 }
+
+let av = document.querySelector(".average");
+
+setInterval(() => {
+  av.textContent = getNote();
+}, 3000);
