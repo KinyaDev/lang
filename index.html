@@ -90,7 +90,7 @@
       const socket = io("https://nyaara-app.herokuapp.com/", {
         withCredentials: true,
         extraHeaders: {
-          "my-custom-header": "abcd",
+          "Access-Control-Allow-Origin": "*",
         },
       });
     </script>
