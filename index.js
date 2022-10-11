@@ -3,23 +3,25 @@ let servRoot = "https://nyaara-app.herokuapp.com";
 let av = document.querySelector(".average");
 let btnnote = document.querySelector(".recommend");
 
-setInterval(async () => {
-  try {
-    let r = await fetch(`${servRoot}/recommend/`, { method: "GET" });
-    av.textContent = (await r.json()).count;
+setInterval(() => {
+  fetch(`${servRoot}/recommend`, { method: "GET" })
+    .then(async (r) => {
+      av.textContent = (await r.json()).count;
+    })
+    .catch(console.error);
 
-    let r1 = await fetch(`${servRoot}/recommend/${localStorage.id}`, {
-      method: "GET",
-    });
-    if ((await r1.json()).have === true) {
-      btnnote.value = "I don't recommend!";
-    } else {
-      btnnote.value = "I recommend!";
-    }
-  } catch (e) {
-    console.error(e);
-  }
-}, 3000);
+  fetch(`${servRoot}/recommend/${localStorage.id}`, {
+    method: "GET",
+  })
+    .then(async (r1) => {
+      if ((await r1.json()).have === true) {
+        btnnote.value = "I don't recommend!";
+      } else {
+        btnnote.value = "I recommend!";
+      }
+    })
+    .catch(console.error);
+}, 5000);
 
 btnnote.addEventListener("click", async (ev) => {
   try {
