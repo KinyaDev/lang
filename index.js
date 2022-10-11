@@ -1,25 +1,40 @@
 let servRoot = "https://nyaara-app.herokuapp.com";
 
 let av = document.querySelector(".average");
+let btnnote = document.querySelector(".recommend");
 
 setInterval(async () => {
-  let r = await fetch(`${servRoot}/getNotes`);
-  av.textContent = (await r.json()).note;
+  try {
+    let r = await fetch(`${servRoot}/recommend/`, { method: "GET" });
+    av.textContent = (await r.json()).count;
+
+    let r1 = await fetch(`${servRoot}/recommend/${localStorage.id}`, {
+      method: "GET",
+    });
+    if ((await r1.json()).have === true) {
+      btnnote.value = "I don't recommend!";
+    } else {
+      btnnote.value = "I recommend!";
+    }
+  } catch (e) {
+    console.error(e);
+  }
 }, 3000);
 
-let btnnote = document.querySelector(".sendnote");
-btnnote.addEventListener("click", (ev) => {
-  let inp = document.querySelector(".putnote");
-
+btnnote.addEventListener("click", async (ev) => {
   try {
-    let n = parseInt(inp.value);
-    if (n <= 20) {
-      fetch(`${servRoot}/recommend/${localStorage.id}/${inp.value}`);
+    if (btnnote.value === "I don't recommend!") {
+      await fetch(`${servRoot}/recommend`, {
+        method: "DELETE",
+        body: { id: localStorage.id },
+      });
     } else {
-      alert("Must be under 20");
+      await fetch(`${servRoot}/recommend`, {
+        method: "POST",
+        body: { id: localStorage.id },
+      });
     }
-    inp.value = "";
-  } catch {
-    alert("Bad value");
+  } catch (e) {
+    console.error(e);
   }
 });
